@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student_sub" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b8957d26-2fc9-409b-9a05-58c349c1e009">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="StudentDataSet" uuid="ed45da7e-a9bc-441e-a83e-450023c56120">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="email" class="java.lang.String"/>
+		<field name="coursedataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+		<field name="name" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="CourseDataSet" uuid="e3c2313d-d2db-419c-972e-9a5bcca219b9">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="location" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="studentDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="170" y="10" width="177" height="40" uuid="3e0596f0-9659-48bc-9a7c-f465e14d3622"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Students]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="140" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="20" width="540" height="120" uuid="bed803a6-234f-45f7-94cd-89f2f859c12a"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="StudentDataSet" uuid="77fe2948-938e-4fb0-b27b-8a0bf91d2129">
+						<dataSourceExpression><![CDATA[$F{studentDataSource}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="120" width="540">
+						<textField>
+							<reportElement x="350" y="0" width="150" height="30" uuid="9d846cef-42f9-4403-b4dd-777b0ec05299"/>
+							<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="80" y="0" width="150" height="30" uuid="e844d9fa-f00a-4872-beb4-6b42969202c9"/>
+							<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement x="10" y="0" width="70" height="30" uuid="1cc7af89-1785-4199-9071-9ce8b55fced6"/>
+							<text><![CDATA[Name]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="240" y="0" width="100" height="30" uuid="f4246ccd-abc1-45c7-a5bf-46253bbc56df"/>
+							<text><![CDATA[Email]]></text>
+						</staticText>
+						<componentElement>
+							<reportElement x="20" y="80" width="491" height="30" uuid="a9de6cb6-d214-4c59-807f-c2fd5624446c"/>
+							<jr:list>
+								<datasetRun subDataset="CourseDataSet" uuid="6c52c623-ca41-41e0-a140-b545db61d0ba">
+									<datasetParameter name="REPORT_DATA_SOURCE">
+										<datasetParameterExpression><![CDATA[$F{coursedataSource}]]></datasetParameterExpression>
+									</datasetParameter>
+									<dataSourceExpression><![CDATA[$P{REPORT_CONNECTION}]]></dataSourceExpression>
+								</datasetRun>
+								<jr:listContents height="30" width="491">
+									<textField>
+										<reportElement x="50" y="0" width="110" height="30" uuid="27e2c896-37fb-4a7d-a5b0-df3048cea436"/>
+										<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement x="300" y="0" width="130" height="30" uuid="82640793-b2dc-45e7-ab0b-8e8bfc5ad5ec"/>
+										<textFieldExpression><![CDATA[$F{location}]]></textFieldExpression>
+									</textField>
+									<staticText>
+										<reportElement x="230" y="0" width="60" height="30" uuid="d2a9b1c9-0aa2-4146-8f38-fa23b5a76d0e"/>
+										<text><![CDATA[Location]]></text>
+									</staticText>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+						<staticText>
+							<reportElement x="60" y="40" width="90" height="30" uuid="e0e8650a-ecb3-45a0-a6f7-49a90bce215c"/>
+							<text><![CDATA[Courses]]></text>
+						</staticText>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>
